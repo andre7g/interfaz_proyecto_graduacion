@@ -22,10 +22,10 @@ namespace InterfaceBiaweb.Controllers
         }
 
         // Url local
-        string urlBase = "https://localhost:44322/";
+        string urlBase = "https://localhost:7291/";
 
         // Url del servidor
-        //string urlBase = "https://192.168.0.4:44309/";
+        //string urlBase = "http://205.209.122.7:90/";
 
 
 
@@ -466,11 +466,13 @@ namespace InterfaceBiaweb.Controllers
                     }
                 }
                 //_env.WebRootPath
-                string ruta = _env.WebRootPath + archivos.path;
+                string ruta = Path.Combine(_env.ContentRootPath, "DocumentosBiaWeb" + archivos.path);
+
+                string rutaWeb = Path.Combine(_env.ContentRootPath, "documentos" + archivos.path);
 
                 string nombreArchivo = randomnumber.ToString() + Path.GetExtension(archivos.Files.FileName);
 
-                string rutaRegistro = ruta + nombreArchivo;
+                string rutaRegistro = rutaWeb + nombreArchivo;
 
                 //Verificar si existe la carpeta con el nombre de la empresa
                 if (!Directory.Exists(ruta))
@@ -489,7 +491,7 @@ namespace InterfaceBiaweb.Controllers
                     FileResponse fResponse = new FileResponse();
                     fResponse.status = 200;
                     fResponse.mensaje = "Se ha cargado el archivo con éxito";
-                    fResponse.pathArchivo = archivos.path + nombreArchivo;
+                    fResponse.pathArchivo = "\\documentos" + archivos.path + nombreArchivo;
                     fResponse.extensionArchivo = Path.GetExtension(archivos.Files.FileName);
                     message = JsonConvert.SerializeObject(fResponse);
                     //message = String.Format(json);
