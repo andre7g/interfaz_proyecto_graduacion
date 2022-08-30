@@ -22,7 +22,8 @@ namespace InterfaceBiaweb.Controllers
         }
 
         // Url local
-        string urlBase = "https://localhost:44322/";
+        //string urlBase = "https://localhost:44322/";
+        string urlBase = "https://localhost:44396/";
 
         // Url del servidor
         //string urlBase = "https://192.168.0.4:44309/";
